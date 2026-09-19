@@ -31,7 +31,7 @@ Users can create, view, update, and delete their own projects.
 
 ## Database Design
 
-![ClientFlow ERD](./assests/Relationship%20.png)
+![ClientFlow ERD](./assets/Relationship%20.png)
 
 ## Routes
 
