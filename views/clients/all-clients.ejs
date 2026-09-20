@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients</title>
+</head>
+<body>
+    <h1>My Clients</h1>
+    <p>Here you can view your clients.</p>
+
+    <a href="/clients/new">Add Client</a>
+
+    <div class="clients-container">
+
+    <% for(let client of clients){ %>
+
+    <div class="client-card">
+
+   <h2><%= client.name %></h2>
+
+    <p>Company: <%= client.company %></p>
+    <p>Email: <%= client.email %></p>
+    <p>Phone: <%= client.phone %></p>
+
+    </div>
+
+<% } %>
+
+ </div>
+
+
+</body>
+</html>

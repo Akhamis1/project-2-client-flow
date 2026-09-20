@@ -34,4 +34,19 @@ res.redirect("/clients")
 })
 
 
+//shows all the clients for the logged in user
+router.get("/", isSignedIn, async (req,res)=>{
+    try {
+    const clients = await Client.find({
+    owner: req.session.user._id
+    })
+
+    res.render("clients/all-clients.ejs", {clients})
+
+    } catch (error) {
+    console.log(error)
+     res.redirect("/")
+    }
+})
+
 module.exports = router
