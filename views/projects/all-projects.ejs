@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+<body>
+    <h1>My Projects</h1>
+    <p>Here you can view your projects</p>
+
+    <a href="/projects/new">Add Project</a>
+
+    <div class="projects-container">
+
+    <% for(let project of projects){ %>
+
+    <div class="project-card">
+
+    <h2><%= project.title %></h2>
+
+    <p>Description: <%= project.description %></p>
+
+    <p>Price: <%= project.price %></p>
+
+    <p>Status: <%= project.status %></p>
+
+<p>
+    Deadline:
+    <%= new Date(project.deadline).getDate() %>/
+    <%= new Date(project.deadline).getMonth() + 1 %>/
+    <%= new Date(project.deadline).getFullYear() %>
+</p>
+
+    </div>
+
+ <% } %>
+
+    </div>
+
+
+    
+
+</body>
+</html>

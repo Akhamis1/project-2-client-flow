@@ -38,7 +38,19 @@ router.post("/",isSignedIn,async (req,res)=>{
     res.redirect("/projects/new")
     }
 })
+// show the projects to the user
+router.get("/",isSignedIn,async(req,res)=>{
+try{
+    const projects = await Project.find({
+        owner : req.session.user._id
+    })
+    res.render("projects/all-projects.ejs",{projects})
+}catch(error){
+    console.log(error)
+    res.redirect("/")
+}
 
+})
 
 
 module.exports = router
