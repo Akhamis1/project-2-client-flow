@@ -22,6 +22,9 @@ Deadline:
 <%= new Date(project.deadline).getMonth() + 1 %>/
 <%= new Date(project.deadline).getFullYear() %>
 </p>
+<a href="/projects/<%= project._id %>/edit">Edit Project</a>
+
+<br><br>
   <a href="/projects">Back to Projects</a>
 </body>
 </html>

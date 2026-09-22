@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+</head>
+<body>
+
+<h1>Edit Project</h1>
+
+<form action="/projects/<%= project._id %>?_method=PUT" method="POST">
+
+<label for="title">Title:</label>
+<input type="text" id="title" name="title" value="<%= project.title %>" required>
+
+<br><br>
+
+<label for="description">Description:</label>
+<textarea id="description" name="description"><%= project.description %></textarea>
+
+<br><br>
+
+<label for="price">Price:</label>
+<input type="number" id="price" name="price" value="<%= project.price %>" required>
+
+<br><br>
+
+<label for="status">Status:</label>
+<select id="status" name="status">
+
+<option value="Pending" <%= project.status === "Pending" ? "selected" : "" %>>
+Pending
+</option>
+
+<option value="In Progress" <%= project.status === "In Progress" ? "selected" : "" %>>
+In Progress
+</option>
+
+<option value="Completed" <%= project.status === "Completed" ? "selected" : "" %>>
+Completed
+</option>
+
+<option value="Cancel" <%= project.status === "Cancel" ? "selected" : "" %>>
+Cancel
+</option>
+
+</select>
+
+<br><br>
+
+<label for="deadline">Deadline:</label>
+<input type="date" id="deadline" name="deadline" value="<%= project.deadline.toISOString().split('T')[0] %>">
+
+<br><br>
+
+<label for="client">Client:</label>
+<select id="client" name="client" required>
+
+<% for(let client of clients){ %>
+
+<option value="<%= client._id %>" <%= project.client.toString() === client._id.toString() ? "selected" : "" %>>
+<%= client.name %>
+</option>
+
+<% } %>
+
+</select>
+
+<br><br>
+
+<button type="submit">Update Project</button>
+
+</form>
+
+</body>
+</html>

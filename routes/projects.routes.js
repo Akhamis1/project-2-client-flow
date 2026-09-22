@@ -67,6 +67,53 @@ if (!project || project.owner.toString() !== req.session.user._id.toString()) {
      res.redirect("/projects")
     }
 })
+// shows the form to edit a project
+router.get("/:projectId/edit", isSignedIn, async(req,res)=>{
+    try{
+
+    const project = await Project.findById(req.params.projectId)
+
+    if (!project || project.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/projects")
+    }
+
+    const clients = await Client.find({
+    owner: req.session.user._id
+    })
+
+    res.render("projects/update-project.ejs", {project, clients})
+
+    }catch(error){
+    console.log(error)
+    res.redirect("/projects")
+    }
+})
+// updates the project in the database
+router.put("/:projectId", isSignedIn, async(req,res)=>{
+try{
+
+const project = await Project.findById(req.params.projectId)
+
+if (!project || project.owner.toString() !== req.session.user._id.toString()) {
+return res.redirect("/projects")
+}
+
+await Project.findByIdAndUpdate(req.params.projectId, {
+title: req.body.title,
+description: req.body.description,
+price: req.body.price,
+status: req.body.status,
+deadline: req.body.deadline,
+client: req.body.client
+})
+
+res.redirect("/projects/" + req.params.projectId)
+
+}catch(error){
+console.log(error)
+res.redirect("/projects")
+}
+})
 
 
 module.exports = router
