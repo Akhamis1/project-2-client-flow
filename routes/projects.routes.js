@@ -42,7 +42,7 @@ router.post("/",isSignedIn,async (req,res)=>{
 router.get("/",isSignedIn,async(req,res)=>{
 try{
     const projects = await Project.find({
-        owner : req.session.user._id
+     owner : req.session.user._id
     })
     res.render("projects/all-projects.ejs",{projects})
 }catch(error){
@@ -50,6 +50,22 @@ try{
     res.redirect("/")
 }
 
+})
+
+// show one project
+router.get("/:projectId", isSignedIn, async(req,res)=>{
+    try{
+   const project = await Project.findById(req.params.projectId).populate("client")
+
+if (!project || project.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/projects")
+    }
+    res.render("projects/project-details.ejs", {project})
+
+    }catch(error){
+    console.log(error)
+     res.redirect("/projects")
+    }
 })
 
 

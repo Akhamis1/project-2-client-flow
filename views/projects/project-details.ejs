@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Details</title>
+</head>
+<body>
+<h1><%= project.title %></h1>
+
+<p>Description: <%= project.description %></p>
+
+<p>Price: <%= project.price %></p>
+
+<p>Status: <%= project.status %></p>
+
+<p>Client: <%= project.client.name %></p>
+
+<p>
+Deadline:
+<%= new Date(project.deadline).getDate() %>/
+<%= new Date(project.deadline).getMonth() + 1 %>/
+<%= new Date(project.deadline).getFullYear() %>
+</p>
+  <a href="/projects">Back to Projects</a>
+</body>
+</html>

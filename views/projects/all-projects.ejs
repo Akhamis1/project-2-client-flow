@@ -7,17 +7,22 @@
 </head>
 <body>
     <h1>My Projects</h1>
-    <p>Here you can view your projects</p>
+  
 
-    <a href="/projects/new">Add Project</a>
+    <a href="/projects/new">Add Projects</a>
 
+     <h2>view your projects :</h2>
     <div class="projects-container">
 
     <% for(let project of projects){ %>
 
     <div class="project-card">
 
-    <h2><%= project.title %></h2>
+    <h2>
+    <a href="/projects/<%= project._id %>" title="Click to see details">
+    <%= project.title %>
+    </a>
+    </h2>
 
     <p>Description: <%= project.description %></p>
 
