@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <%- include("../partials/navbar.ejs") %>
+    <main class="clients-page">
     <h1>My Clients</h1>
     <p>Here you can view your clients.</p>
 
-    <a href="/clients/new">Add Client</a>
+    <a class="add-button" href="/clients/new">Add Client</a>
 
     <div class="clients-container">
 
@@ -30,6 +32,6 @@
 
  </div>
 
-
+</main>
 </body>
 </html>

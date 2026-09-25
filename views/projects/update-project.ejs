@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Project</title>
+    <title>Edit Project | ClientFlow</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
 <%- include("../partials/navbar.ejs") %>
+
+<main class="form-page">
+
+<div class="form-header">
 <h1>Edit Project</h1>
+<p>Update the project details below.</p>
+</div>
 
-<form action="/projects/<%= project._id %>?_method=PUT" method="POST">
+<form class="project-form" action="/projects/<%= project._id %>?_method=PUT" method="POST">
 
-<label for="title">Title:</label>
+<label for="title">Project Title</label>
 <input type="text" id="title" name="title" value="<%= project.title %>" required>
 
-<br><br>
-
-<label for="description">Description:</label>
+<label for="description">Description</label>
 <textarea id="description" name="description"><%= project.description %></textarea>
 
-<br><br>
+<div class="form-row">
 
-<label for="price">Price:</label>
+<div>
+<label for="price">Price</label>
 <input type="number" id="price" name="price" value="<%= project.price %>" required>
+</div>
 
-<br><br>
+<div>
+<label for="status">Status</label>
 
-<label for="status">Status:</label>
 <select id="status" name="status">
 
 <option value="Pending" <%= project.status === "Pending" ? "selected" : "" %>>
@@ -46,15 +56,20 @@ Cancel
 </option>
 
 </select>
+</div>
 
-<br><br>
+</div>
 
-<label for="deadline">Deadline:</label>
+<div class="form-row">
+
+<div>
+<label for="deadline">Deadline</label>
 <input type="date" id="deadline" name="deadline" value="<%= project.deadline.toISOString().split('T')[0] %>">
+</div>
 
-<br><br>
+<div>
+<label for="client">Client</label>
 
-<label for="client">Client:</label>
 <select id="client" name="client" required>
 
 <% for(let client of clients){ %>
@@ -66,12 +81,15 @@ Cancel
 <% } %>
 
 </select>
+</div>
 
-<br><br>
+</div>
 
 <button type="submit">Update Project</button>
 
 </form>
+
+</main>
 
 </body>
 </html>

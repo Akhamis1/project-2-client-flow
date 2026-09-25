@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | ClientFlow</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-  <%- include("../partials/navbar.ejs") %>
+
+<%- include("../partials/navbar.ejs") %>
+
+<main class="project-details-page">
+
+<a class="back-link" href="/projects">← Back to Projects</a>
+
+<div class="details-card">
+
+<div class="details-header">
+
+<div>
+<p class="details-label">PROJECT DETAILS</p>
 <h1><%= project.title %></h1>
+</div>
 
-<p>Description: <%= project.description %></p>
+<span class="details-status"><%= project.status %></span>
 
-<p>Price: <%= project.price %></p>
+</div>
 
-<p>Status: <%= project.status %></p>
+<div class="details-section">
 
-<p>Client: <%= project.client.name %></p>
+<h3>Description</h3>
+<p><%= project.description %></p>
 
-<p>
-Deadline:
+</div>
+
+<div class="details-info">
+
+<div>
+<span>Client</span>
+<strong><%= project.client.name %></strong>
+</div>
+
+<div>
+<span>Price</span>
+<strong><%= project.price %> BHD</strong>
+</div>
+
+<div>
+<span>Deadline</span>
+<strong>
 <%= new Date(project.deadline).getDate() %>/
 <%= new Date(project.deadline).getMonth() + 1 %>/
 <%= new Date(project.deadline).getFullYear() %>
-</p>
-<a href="/projects/<%= project._id %>/edit">Edit Project</a>
+</strong>
+</div>
 
-<br><br>
+</div>
+
+<div class="details-actions">
+
+<a class="edit-button" href="/projects/<%= project._id %>/edit">Edit Project</a>
 
 <form action="/projects/<%= project._id %>?_method=DELETE" method="POST">
-<button type="submit">Delete Project</button>
+<button class="delete-button" type="submit">Delete Project</button>
 </form>
 
-<br><br>
-  <a href="/projects">Back to Projects</a>
+</div>
+
+</div>
+
+</main>
+
 </body>
 </html>

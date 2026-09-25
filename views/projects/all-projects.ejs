@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <title>Projects | ClientFlow</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <%- include("../partials/navbar.ejs") %>
-    <h1>My Projects</h1>
-  
 
-    <a href="/projects/new">Add Projects</a>
+<%- include("../partials/navbar.ejs") %>
 
-    <h2>view your projects :</h2>
-    <div class="projects-container">
+<main class="projects-page">
 
-    <% for(let project of projects){ %>
+<h1>My Projects</h1>
 
-    <div class="project-card">
+<p>Here you can view your projects.</p>
 
-    <h2>
-    <a href="/projects/<%= project._id %>" title="Click to see details">
-    <%= project.title %>
-    </a>
-    </h2>
+<a class="add-button" href="/projects/new">Add Project</a>
 
-    <p>Description: <%= project.description %></p>
+<div class="projects-container">
 
-    <p>Price: <%= project.price %></p>
+<% for(let project of projects){ %>
 
-    <p>Status: <%= project.status %></p>
+<a class="project-card-link" href="/projects/<%= project._id %>">
+
+<div class="project-card">
+
+<h2><%= project.title %></h2>
+
+<p>Description: <%= project.description %></p>
+
+<p>Price: <%= project.price %> BHD</p>
+
+<p>Status: <%= project.status %></p>
 
 <p>
-    Deadline:
-    <%= new Date(project.deadline).getDate() %>/
-    <%= new Date(project.deadline).getMonth() + 1 %>/
-    <%= new Date(project.deadline).getFullYear() %>
+Deadline:
+<%= new Date(project.deadline).getDate() %>/
+<%= new Date(project.deadline).getMonth() + 1 %>/
+<%= new Date(project.deadline).getFullYear() %>
 </p>
 
-    </div>
+</div>
 
- <% } %>
+</a>
 
-    </div>
+<% } %>
 
+</div>
 
-    
+</main>
 
 </body>
 </html>

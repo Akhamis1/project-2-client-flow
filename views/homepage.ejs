@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    
 
 <%- include("partials/navbar") %>
+
+<main class="home">
 
 <h1>ClientFlow</h1>
 
@@ -18,19 +22,13 @@
 
 <p>Manage your clients and projects in one place.</p>
 
-<div>
+<div class="home-links">
 
 <a href="/clients">My Clients</a>
 
-<br><br>
-
 <a href="/projects">My Projects</a>
 
-<br><br>
-
 <a href="/clients/new">Add Client</a>
-
-<br><br>
 
 <a href="/projects/new">Create Project</a>
 
@@ -40,13 +38,17 @@
 
 <p>Manage your clients and projects in one place.</p>
 
-<a href="/auth/sign-in">Sign In</a>
+<div class="home-links">
 
-<br><br>
+<a href="/auth/sign-in">Sign In</a>
 
 <a href="/auth/sign-up">Create Account</a>
 
+</div>
+
 <% } %>
-    
+
+</main>
+
 </body>
 </html>
