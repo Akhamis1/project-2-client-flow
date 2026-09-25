@@ -25,6 +25,12 @@ Deadline:
 <a href="/projects/<%= project._id %>/edit">Edit Project</a>
 
 <br><br>
+
+<form action="/projects/<%= project._id %>?_method=DELETE" method="POST">
+<button type="submit">Delete Project</button>
+</form>
+
+<br><br>
   <a href="/projects">Back to Projects</a>
 </body>
 </html>

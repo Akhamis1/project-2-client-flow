@@ -42,7 +42,8 @@ router.post("/",isSignedIn,async (req,res)=>{
 router.get("/",isSignedIn,async(req,res)=>{
 try{
     const projects = await Project.find({
-     owner : req.session.user._id
+    owner : req.session.user._id,
+    isDeleted: false
     })
     res.render("projects/all-projects.ejs",{projects})
 }catch(error){
@@ -113,6 +114,28 @@ res.redirect("/projects/" + req.params.projectId)
 console.log(error)
 res.redirect("/projects")
 }
+})
+
+// soft delete 
+router.delete("/:projectId", isSignedIn, async(req,res)=>{
+    try{
+
+    const project = await Project.findById(req.params.projectId)
+
+    if (!project || project.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/projects")
+  }
+
+    await Project.findByIdAndUpdate(req.params.projectId,{
+    isDeleted: true
+    })
+
+    res.redirect("/projects")
+
+    }catch(error){
+    console.log(error)
+    res.redirect("/projects")
+    }
 })
 
 

@@ -20,6 +20,7 @@ const clientSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     }
+  
 },{timestamps:true})
 
 const Client = mongoose.model("Client",clientSchema)
