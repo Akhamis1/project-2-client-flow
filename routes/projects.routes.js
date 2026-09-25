@@ -52,31 +52,15 @@ try{
 }
 
 })
-
-// show one project
-router.get("/:projectId", isSignedIn, async(req,res)=>{
-    try{
-   const project = await Project.findById(req.params.projectId).populate("client")
-
-if (!project || project.owner.toString() !== req.session.user._id.toString()) {
-    return res.redirect("/projects")
-    }
-    res.render("projects/project-details.ejs", {project})
-
-    }catch(error){
-    console.log(error)
-     res.redirect("/projects")
-    }
-})
 // shows the form to edit a project
 router.get("/:projectId/edit", isSignedIn, async(req,res)=>{
     try{
 
     const project = await Project.findById(req.params.projectId)
 
-    if (!project || project.owner.toString() !== req.session.user._id.toString()) {
+   if (!project || project.isDeleted || project.owner.toString() !== req.session.user._id.toString()) {
     return res.redirect("/projects")
-    }
+}
 
     const clients = await Client.find({
     owner: req.session.user._id
@@ -89,13 +73,31 @@ router.get("/:projectId/edit", isSignedIn, async(req,res)=>{
     res.redirect("/projects")
     }
 })
+
+// show one project
+router.get("/:projectId", isSignedIn, async(req,res)=>{
+    try{
+   const project = await Project.findById(req.params.projectId).populate("client")
+
+ if (!project || project.isDeleted || project.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/projects")
+    }
+
+    res.render("projects/project-details.ejs", {project})
+
+    }catch(error){
+    console.log(error)
+     res.redirect("/projects")
+    }
+})
+
 // updates the project in the database
 router.put("/:projectId", isSignedIn, async(req,res)=>{
 try{
 
 const project = await Project.findById(req.params.projectId)
 
-if (!project || project.owner.toString() !== req.session.user._id.toString()) {
+if (!project || project.isDeleted || project.owner.toString() !== req.session.user._id.toString()) {
 return res.redirect("/projects")
 }
 
