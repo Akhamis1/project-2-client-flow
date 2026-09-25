@@ -1,11 +1,15 @@
 <nav>
-
     <a href="/">ClientFlow</a>
 
     <% if (user) { %>
 
         <a href="/clients">Clients</a>
         <a href="/projects">Projects</a>
+
+        <span class="nav-role">
+            <%= user.role %>
+        </span>
+
         <a href="/auth/sign-out">Logout</a>
 
     <% } else { %>
@@ -14,5 +18,4 @@
         <a href="/auth/sign-up">Register</a>
 
     <% } %>
-
 </nav>

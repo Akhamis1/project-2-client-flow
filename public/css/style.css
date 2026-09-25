@@ -753,3 +753,15 @@ nav a:hover {
 .auth-bottom a:hover {
     text-decoration: underline;
 }
+.nav-role {
+    margin-left: auto;
+    padding: 7px 12px;
+
+    background-color: rgb(30, 41, 59);
+    color: rgb(147, 197, 253);
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
