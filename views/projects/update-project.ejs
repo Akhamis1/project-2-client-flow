@@ -6,7 +6,7 @@
     <title>Edit Project</title>
 </head>
 <body>
-
+<%- include("../partials/navbar.ejs") %>
 <h1>Edit Project</h1>
 
 <form action="/projects/<%= project._id %>?_method=PUT" method="POST">
