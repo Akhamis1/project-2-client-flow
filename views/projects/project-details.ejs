@@ -14,6 +14,10 @@
 
 <main class="project-details-page">
 
+<div class="pdf-header">
+<img src="/logo/Clientflow.png" alt="ClientFlow Logo">
+</div>
+
 <a class="back-link" href="/projects">← Back to Projects</a>
 
 <div class="details-card">
@@ -62,6 +66,8 @@
 <div class="details-actions">
 
 <a class="edit-button" href="/projects/<%= project._id %>/edit">Edit Project</a>
+
+<button class="pdf-button" type="button" onclick="window.print()">Export PDF</button>
 
 <form action="/projects/<%= project._id %>?_method=DELETE" method="POST">
 <button class="delete-button" type="submit">Delete Project</button>
