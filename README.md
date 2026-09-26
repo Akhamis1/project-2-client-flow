@@ -105,6 +105,7 @@ http://localhost:3000
 - As a user, I want to see the details of a project.
 - As a user, I want to edit my projects.
 - As a user, I want to delete my projects.
+- As a user, I want to export my project details as a PDF.
 - As a user, I want to logout from my account.
 
 ## Database Design
