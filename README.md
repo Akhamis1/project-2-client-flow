@@ -84,7 +84,7 @@ PORT=3000
 6. Start the application:
 
 ```bash
-npm start
+nodemon server.js
 ```
 
 7. Open your browser and go to:
