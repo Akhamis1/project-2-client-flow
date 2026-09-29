@@ -4,7 +4,7 @@ const Project = require("../models/Project")
 const Client = require("../models/Client")
 const isSignedIn = require("../middleware/is-signed-in")
 
-// shows the form to create a new project
+
 router.get("/new", isSignedIn, async (req,res)=>{
     try{
     const clients = await Client.find({
@@ -18,7 +18,7 @@ router.get("/new", isSignedIn, async (req,res)=>{
     res.redirect("/")
     }
 })
-// create the project to save it in the database
+
 router.post("/",isSignedIn,async (req,res)=>{
     try{
     await Project.create({
@@ -38,7 +38,7 @@ router.post("/",isSignedIn,async (req,res)=>{
     res.redirect("/projects/new")
     }
 })
-// show the projects to the user
+
 router.get("/",isSignedIn,async(req,res)=>{
 try{
     const projects = await Project.find({
@@ -52,7 +52,7 @@ try{
 }
 
 })
-// shows the form to edit a project
+
 router.get("/:projectId/edit", isSignedIn, async(req,res)=>{
     try{
 
@@ -74,7 +74,6 @@ router.get("/:projectId/edit", isSignedIn, async(req,res)=>{
     }
 })
 
-// show one project
 router.get("/:projectId", isSignedIn, async(req,res)=>{
     try{
    const project = await Project.findById(req.params.projectId).populate("client")
@@ -91,7 +90,6 @@ router.get("/:projectId", isSignedIn, async(req,res)=>{
     }
 })
 
-// updates the project in the database
 router.put("/:projectId", isSignedIn, async(req,res)=>{
 try{
 
@@ -118,7 +116,7 @@ res.redirect("/projects")
 }
 })
 
-// soft delete 
+
 router.delete("/:projectId", isSignedIn, async(req,res)=>{
     try{
 
