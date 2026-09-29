@@ -117,6 +117,38 @@ nav a:hover {
     border-color: rgb(29, 78, 216);
 }
 
+/* ========================================
+   NOT FOUND PAGE
+======================================== */
+
+.not-found-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 140px 24px;
+    text-align: center;
+}
+
+.not-found-code {
+    margin: 0;
+    color: rgb(37, 99, 235);
+    font-size: 96px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.not-found-page h1 {
+    margin: 18px 0 12px;
+    color: rgb(15, 23, 42);
+    font-size: 34px;
+}
+
+.not-found-page > p:not(.not-found-code) {
+    margin: 0 0 28px;
+    color: rgb(100, 116, 139);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 
 /* ========================================
    MAIN PAGES
@@ -851,6 +883,10 @@ nav a:hover {
         padding-top: 80px;
     }
 
+    .not-found-page {
+        padding: 96px 24px;
+    }
+
     .home h1 {
         font-size: 48px;
     }
@@ -919,6 +955,18 @@ nav a:hover {
     .home {
         margin: 0 20px;
         padding-top: 56px;
+    }
+
+    .not-found-page {
+        padding: 72px 20px;
+    }
+
+    .not-found-code {
+        font-size: 72px;
+    }
+
+    .not-found-page h1 {
+        font-size: 28px;
     }
 
     .home-logo {
